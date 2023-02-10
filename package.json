@@ -1,7 +1,7 @@
 {
   "name": "chef-server-file-upload",
   "displayName": "Chef Server File Upload",
-  "description": "Upload files to chef server using knife upload command",
+  "description": "Upload json files to chef server using 'knife upload' command",
   "version": "0.0.1",
   "publisher": "rda-run",
   "engines": {
@@ -9,6 +9,11 @@
   },
   "categories": ["Other"],
   "main": "./out/extension.js",
+  "icon": "images/knife.png",
+  "galleryBanner" : {
+		"color": "#5c2d91",
+		"theme" : "dark"
+	},
   "contributes": {
     "commands": [
       {
