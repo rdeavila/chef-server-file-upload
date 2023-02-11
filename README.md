@@ -5,3 +5,5 @@ Visual Studio Code. It provides an effortless way to upload `.json` files to a
 Chef Server, making it easier to manage your infrastructure. Whether you're a
 seasoned chef or just starting out, the Chef Server File Upload extension is an
 indispensable tool that will make your life easier.
+
+![Send the opened file to Chef Server](images/screenshot.png "Menu item")
