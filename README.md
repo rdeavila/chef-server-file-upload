@@ -11,4 +11,6 @@ indispensable tool that will make your life easier.
 `.chef-repo.txt` file on your repo, and if `knife` command is working before
 using this extension.
 
-![Send the opened file to Chef Server](images/screenshot.png "Menu item")
+| `.json` files | Cookbooks |
+|:-:|:-:|
+| ![JSON: Send to Chef Server](images/json.png "Menu item for JSON files") | ![COOKBOOK: Send to Chef Server](images/cookbook.png "Menu item for Cookbooks") |

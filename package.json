@@ -18,11 +18,11 @@
     "commands": [
       {
         "command": "chef-server-file-upload.file",
-        "title": "Send this file to Chef Server"
+        "title": "JSON: Send to Chef Server"
       },
       {
         "command": "chef-server-file-upload.cookbook",
-        "title": "Send this cookbook to Chef Server"
+        "title": "COOKBOOK: Send to Chef Server"
       }
     ],
     "menus": {
