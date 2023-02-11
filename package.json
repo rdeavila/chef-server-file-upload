@@ -1,7 +1,7 @@
 {
   "name": "chef-server-file-upload",
   "displayName": "Chef Server File Upload",
-  "description": "Upload json files to chef server using 'knife upload' command",
+  "description": "Upload json files and cookbooks to Chef Server using 'knife upload' and 'knife cookbook upload' commands",
   "version": "0.0.1",
   "publisher": "rda-run",
   "engines": {
@@ -17,15 +17,23 @@
   "contributes": {
     "commands": [
       {
-        "command": "chef-server-file-upload.uploadFile",
-        "title": "Send the opened file to Chef Server"
+        "command": "chef-server-file-upload.file",
+        "title": "Send this file to Chef Server"
+      },
+      {
+        "command": "chef-server-file-upload.cookbook",
+        "title": "Send this cookbook to Chef Server"
       }
     ],
     "menus": {
       "editor/title/context": [
         {
-          "command": "chef-server-file-upload.uploadFile",
-          "when": "resourceExtname == .json"
+          "command": "chef-server-file-upload.file",
+          "when": "resourceExtname == .json && ( resourceDirname =~ /data_bags/ || resourceDirname =~ /nodes/ || resourceDirname =~ /roles/ || resourceDirname =~ /environments/ || resourceDirname =~ /policyfiles/"
+        },
+        {
+          "command": "chef-server-file-upload.cookbook",
+          "when": "resourceDirname =~ /cookbooks/"
         }
       ]
     }
