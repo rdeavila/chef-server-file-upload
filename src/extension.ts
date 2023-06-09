@@ -4,11 +4,18 @@ import * as cp from "child_process";
 export function activate(context: vscode.ExtensionContext) {
 	const execShell = (cmd: string) =>
 	  new Promise<string>((resolve, reject) => {
-    	cp.exec(cmd, {cwd: getWorkspaceRoot()}, (err, out) => {
-			if (err) {
-				vscode.window.showErrorMessage('Error on command "' +cmd+'": '+err);
-		  }
-		  vscode.window.showInformationMessage(out);
+    	cp.exec(cmd, {cwd: getWorkspaceRoot()}, (error, stdout, stderr) => {
+			if (error) {
+				vscode.window.showErrorMessage('Error on command "' +cmd+'": '+error);
+		  	}
+
+			if (stderr) {
+				vscode.window.showErrorMessage('Error on execution "' +cmd+'": '+stderr);
+			}
+
+			if (stdout) {
+				vscode.window.showInformationMessage(stdout);
+			}
 		});
 	  });
   
