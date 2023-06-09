@@ -2,7 +2,7 @@
   "name": "chef-server-file-upload",
   "displayName": "Chef Server File Upload",
   "description": "Upload json files and cookbooks to Chef Server using 'knife upload' and 'knife cookbook upload' commands",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "rda-run",
   "engines": {
     "vscode": "^1.75.0"
@@ -29,7 +29,7 @@
       "editor/title/context": [
         {
           "command": "chef-server-file-upload.file",
-          "when": "resourceExtname == .json && ( resourceDirname =~ /data_bags/ || resourceDirname =~ /nodes/ || resourceDirname =~ /roles/ || resourceDirname =~ /environments/ || resourceDirname =~ /policyfiles/"
+          "when": "resourceExtname == .json && ( resourceDirname =~ /data_bags/ || resourceDirname =~ /nodes/ || resourceDirname =~ /roles/ || resourceDirname =~ /environments/ || resourceDirname =~ /policyfiles/)"
         },
         {
           "command": "chef-server-file-upload.cookbook",
