@@ -8,9 +8,21 @@ export function executeCommand(command: string) {
 			return;	
 		}
 		if (stderr) {
+			// knife cookbook sends all messages to stderr, I don't know why.
+			// So, let's work on these messages and show them by ourselves.
+			if (stderr.includes("Uploaded 1 cookbook.")) {
+				vscode.window.showInformationMessage("The cookbook was uploaded.");
+				return;	
+			}
 			vscode.window.showErrorMessage(stderr);
 			return;	
 		}
+
+		// On Unix, no-message is a success sign.
+		if (stdout === "") {
+			stdout = "Command executed sucessfully.";
+		}
+
 		vscode.window.showInformationMessage(stdout);
 	});
 }
