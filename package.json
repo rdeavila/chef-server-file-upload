@@ -2,7 +2,7 @@
   "name": "chef-server-file-upload",
   "displayName": "Chef Server File Upload",
   "description": "Upload json files and cookbooks to Chef Server using 'knife upload' and 'knife cookbook upload' commands",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "rda-run",
   "engines": {
     "vscode": "^1.75.0"
