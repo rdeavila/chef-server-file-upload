@@ -1,30 +1,27 @@
 import * as vscode from 'vscode';
 import * as cp from "child_process";
 
+export function executeCommand(command: string) {
+	return cp.exec(command, {cwd: getWorkspaceRoot()}, (err, stdout, stderr) => {
+		if (err) {
+			vscode.window.showErrorMessage(err.message);
+			return;	
+		}
+		if (stderr) {
+			vscode.window.showErrorMessage(stderr);
+			return;	
+		}
+		vscode.window.showInformationMessage(stdout);
+	});
+}
+
 export function activate(context: vscode.ExtensionContext) {
-	const execShell = (cmd: string) =>
-	  new Promise<string>((resolve, reject) => {
-    	cp.exec(cmd, {cwd: getWorkspaceRoot()}, (error, stdout, stderr) => {
-			if (error) {
-				vscode.window.showErrorMessage('Error on command "' +cmd+'": '+error);
-		  	}
-
-			if (stderr) {
-				vscode.window.showErrorMessage('Error on execution "' +cmd+'": '+stderr);
-			}
-
-			if (stdout) {
-				vscode.window.showInformationMessage(stdout);
-			}
-		});
-	  });
-  
 	context.subscriptions.push(
 	  vscode.commands.registerCommand('chef-server-file-upload.runKnifeUpload', async () => {
-		await execShell('knife upload '+getActiveEditorRelativePath());
+		executeCommand('knife upload '+getActiveEditorRelativePath());
 	  }),
 	  vscode.commands.registerCommand('chef-server-file-upload.runKnifeCookbookUpload', async () => {
-		await execShell('knife cookbook upload '+getActiveEditorCookbookName());
+		executeCommand('knife cookbook upload '+getActiveEditorCookbookName());
 	  })
 	);
 
